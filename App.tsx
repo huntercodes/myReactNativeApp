@@ -1,10 +1,12 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, ScrollView } from 'react-native';
 import CardFront from './CardFront';
+import CardBack from './CardBack';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.safeArea}>
+      <CardBack />
       <ScrollView style={styles.scrollView}>
         <CardFront />
       </ScrollView>
