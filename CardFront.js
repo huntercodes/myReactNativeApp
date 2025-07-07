@@ -1,10 +1,11 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, Button } from 'react-native';
 
-export default function CardFront() {
+export default function CardFront({ navigation }) {
     return (
       <View style={styles.container}>
         <Image source={require('./computer.png')} style={styles.profileImage} />
+
         <Text style={styles.name}>Hunter Downey</Text>
         <Text style={styles.tagline}>Creative Developer & Tech Enthusiast</Text>
 
@@ -14,6 +15,10 @@ export default function CardFront() {
         </View>
 
         <Image source={require('./deco.png')} style={styles.decorative} />
+
+        <View style={styles.buttonContainer}>
+            <Button title="Next" onPress={() => navigation.navigate('CardBack')} />
+        </View>
       </View>  
     );
 }
@@ -54,5 +59,10 @@ const styles = StyleSheet.create({
         height: 80,
         resizeMode: 'contain',
         marginTop: 30,
+    },
+    buttonContainer: {
+        width: 200,
+        marginTop: 20,
+        /* enhancement: size-limited button container */
     },
 });

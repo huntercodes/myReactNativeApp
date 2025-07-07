@@ -1,8 +1,8 @@
 import React from 'react';
-import {View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 import CardList from'./CardList';
 
-export default function CardBack() {
+export default function CardBack({ navigation }) {
     return (
       <View style={styles.container}>
         <Text style={styles.header}>Hunter's Workshop</Text>
@@ -10,6 +10,10 @@ export default function CardBack() {
 
         <View style={styles.listContainer}>
             <CardList />
+        </View>
+
+        <View style={styles.buttonContainer}>
+            <Button title="Portfolio" onPress={() => navigation.navigate('CardPortfolio')} />
         </View>
       </View>  
     );
@@ -35,5 +39,10 @@ const styles = StyleSheet.create({
         marginTop: 20,
         width: '100%',
         paddingHorizontal: 20,
+    },
+    buttonContainer: {
+        width: 200,
+        marginTop: 20,
+        /* enhancement: size-limited button container */
     },
 });

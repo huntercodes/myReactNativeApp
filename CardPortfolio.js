@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import CardItem from './CardItem';
 
-export default function CardPortfolio() {
+export default function CardPortfolio({ navigation }) {
   const ITEMS = {
     item1: {
       title: 'RealityHD',
@@ -42,7 +42,13 @@ export default function CardPortfolio() {
         caption={ITEMS[`item${nextItem}`].caption}
       />
 
-      <Button title="Next Project" onPress={handleNext} />
+      <View style={styles.cycleButton}>
+        <Button title="Next Project" onPress={handleNext} />
+      </View>
+
+      <View style={styles.backButton}>
+        <Button title="Back to Start" onPress={() => navigation.navigate('CardFront')} />
+      </View>
     </View>
   );
 }
@@ -61,5 +67,14 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 20,
     color: '#555',
+  },
+  cycleButton: {
+    width: 200,
+    marginVertical: 10,
+  },
+  backButton: {
+    width: 200,
+    marginTop: 10,
+    /* enhancement: size-limited button container */
   },
 });
