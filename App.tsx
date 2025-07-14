@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CardFront from './CardFront';
 import CardBack from './CardBack';
 import CardPortfolio from './CardPortfolio';
+import CardFetch from './CardFetch';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,11 @@ export default function App() {
           name="CardPortfolio"
           component={CardPortfolio}
           options={{ title: 'My Work Showcase'}}
+        />
+        <Stack.Screen 
+          name='CardFetch'
+          component={CardFetch}
+          options={{ title: 'Live Weather Fetch' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
