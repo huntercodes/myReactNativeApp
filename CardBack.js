@@ -1,48 +1,37 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
-import CardList from'./CardList';
+import CardList from './CardList';
+import { useTheme } from './theme';
 
 export default function CardBack({ navigation }) {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.header}>Hunter's Workshop</Text>
-        <Text style={styles.link}>www.github.com/huntercodes</Text>
+  const { theme } = useTheme();
 
-        <View style={styles.listContainer}>
-            <CardList />
-        </View>
+  return (
+    <View style={[styles.container, { backgroundColor: theme.bg }]}>
+      <Text style={[styles.header, { color: theme.textPrimary }]}>Hunter's Workshop</Text>
+      <Text style={[styles.link, { color: theme.textSecondary }]}>www.github.com/huntercodes</Text>
 
+      <View style={styles.listContainer}>
+        <CardList />
+      </View>
+
+      <View style={styles.row}>
         <View style={styles.buttonContainer}>
-            <Button title="Portfolio" onPress={() => navigation.navigate('CardPortfolio')} />
+          <Button title="Portfolio" onPress={() => navigation.navigate('CardPortfolio')} />
         </View>
-      </View>  
-    );
+        <View style={styles.buttonContainer}>
+          <Button title="Contact Me" onPress={() => navigation.navigate('ContactForm')} />
+        </View>
+      </View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        alignItems: 'center',
-        paddingVertical: 20,
-    },
-    header: {
-        fontSize: 26,
-        fontWeight: 'bold',
-        color: '#2e2e2e',
-    },
-    link: {
-        fontSize: 16,
-        fontStyle: 'italic',
-        color: '#555',
-        marginVertical: 8,
-    },
-    listContainer: {
-        marginTop: 20,
-        width: '100%',
-        paddingHorizontal: 20,
-    },
-    buttonContainer: {
-        width: 200,
-        marginTop: 20,
-        /* enhancement: size-limited button container */
-    },
+  container: { alignItems: 'center', padding: 20, flex: 1 },
+  header: { fontSize: 24, fontWeight: 'bold' },
+  link: { fontSize: 16, marginBottom: 10 },
+  listContainer: { width: '100%', flex: 1 },
+  row: { flexDirection: 'row', gap: 12, marginTop: 12 },
+  buttonContainer: { width: 160 },
 });
